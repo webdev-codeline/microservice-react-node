@@ -10,8 +10,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.get('/posts/:id/comments', (req, res) => {
     res.send(commentsByPostId[req.params.id] || []) ;
-    // res.send(posts);
-
 });
 
 app.post('/posts/:id/comments', (req, res) => {
@@ -22,16 +20,8 @@ app.post('/posts/:id/comments', (req, res) => {
     console.log(comments);
     commentsByPostId[req.params.id] = comments;
     res.status(201).send(commentsByPostId);
-    // const  {title} = req.body;
-    // posts[id] = {
-    //     id, title
-    // };
-
-    // res.status(201).send(posts[id]);
-
 });
 
 app.listen(4001, () => {
-
     console.log('Listening on 4001');
 }) 
